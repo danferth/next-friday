@@ -9,16 +9,15 @@ import getQuote from "./getQuote";
 const Kanye = () => {
   const [quote, setQuote] = useState("");
   const [quoteVisible, setQuoteVisible] = useState(false);
-  const [name, setName] = useState("");
-
   function getName() {
     const names = ["Pablo", "Yeezy", "Yeezus", "Mr. West", "Ye", "Kanye"];
     const randomName = Math.floor(Math.random() * names.length);
     return names[randomName];
   }
 
+  const [name] = useState(getName);
+
   useEffect(() => {
-    setName(getName());
     getQuote().then((res) => {
       setQuote(res.quote);
     });
